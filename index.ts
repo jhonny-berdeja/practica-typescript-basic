@@ -52,3 +52,37 @@ const estudiante = new Estudiante("Milton", 34, "Matematicas");
 
 estudiante.estudia();
 //For ecxecute ts-node index.ts
+
+interface IPersona {
+    nombre: string;
+    edad: number;
+    saludar();
+}
+
+//Se puede usar así
+const humano: IPersona = {
+    nombre: "",
+    edad: 0,
+    saludar: function () {
+        console.log("Function not implemented.");
+    }
+}
+
+//Contrato
+class Alumno implements IPersona {
+    nombre: string;
+    edad: number;
+    curso: string;
+    constructor(nombre: string, edad: number, curso: string){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.curso = curso;
+    }
+    saludar() {
+        throw new Error("Method not implemented.");
+    }
+    estudia(): void {
+        console.log(`${this.nombre} está estudiando ${this.curso}`);
+    }
+
+}
